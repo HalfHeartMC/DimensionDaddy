@@ -1,6 +1,6 @@
 # DimensionDaddy
 
-A Fabric mod for Minecraft 1.21.1 that lets server operators enable or disable the End and Nether dimensions at will. When a dimension is disabled, portal blocks are blocked and players attempting to enter receive an action bar message.
+A Fabric mod for Minecraft 1.21.11 that lets server operators enable or disable the End and Nether dimensions at will. When a dimension is disabled, portal blocks are blocked and players attempting to enter receive an action bar message.
 
 ## Commands
 
