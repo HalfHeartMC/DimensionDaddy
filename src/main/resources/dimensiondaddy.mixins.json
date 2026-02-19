@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.halfheart.dimensiondaddy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+  ],
+  "server": [
+    "EndPortalBlockMixin",
+    "NetherPortalBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

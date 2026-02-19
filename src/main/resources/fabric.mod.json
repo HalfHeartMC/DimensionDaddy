@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "dimensiondaddy",
+  "version": "${version}",
+  "name": "Dimension Daddy",
+  "description": "Allows server operators to enable/disable the End and Nether dimensions",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/dimensiondaddy/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.halfheart.dimensiondaddy.client.DimensionDaddyDataGenerator"
+    ],
+    "main": [
+      "org.halfheart.dimensiondaddy.DimensionDaddy"
+    ]
+  },
+  "mixins": [
+    "dimensiondaddy.mixins.json",
+    {
+      "config": "dimensiondaddy.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
