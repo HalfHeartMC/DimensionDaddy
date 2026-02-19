@@ -36,7 +36,7 @@ You can edit this file directly while the server is stopped. Changes made via co
 
 ## Installation
 
-1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 1.21.1.
+1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 1.21.11.
 2. Download [Fabric API](https://modrinth.com/mod/fabric-api) and place it in your `mods` folder.
 3. Place the DimensionDaddy `.jar` into your `mods` folder.
 4. Start your server.
