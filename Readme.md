@@ -29,7 +29,7 @@ You can edit this file directly while the server is stopped. Changes made via co
 
 ## Requirements
 
-- Minecraft 1.21.1
+- Minecraft 1.21.11
 - Fabric Loader ≥ 0.18.2
 - Fabric API
 - Java 21
