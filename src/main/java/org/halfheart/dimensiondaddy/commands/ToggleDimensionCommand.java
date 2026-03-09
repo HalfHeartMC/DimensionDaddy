@@ -3,20 +3,26 @@ package org.halfheart.dimensiondaddy.commands;
 import org.halfheart.dimensiondaddy.DimensionDaddy;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import net.minecraft.command.permission.Permission;
+import net.minecraft.command.permission.PermissionLevel;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
 public class ToggleDimensionCommand {
 
+    private static final Permission OP_LEVEL = new Permission.Level(PermissionLevel.GAMEMASTERS);
+
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
-                CommandManager.literal("enableend").requires(source -> source.getEntity() == null)
+                CommandManager.literal("enableend")
+                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeEnd(context, true))
         );
 
         dispatcher.register(
-                CommandManager.literal("disableend").requires(source -> source.getEntity() == null)
+                CommandManager.literal("disableend")
+                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeEnd(context, false))
         );
 
@@ -26,12 +32,14 @@ public class ToggleDimensionCommand {
         );
 
         dispatcher.register(
-                CommandManager.literal("enablenether").requires(source -> source.getEntity() == null)
+                CommandManager.literal("enablenether")
+                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeNether(context, true))
         );
 
         dispatcher.register(
-                CommandManager.literal("disablenether").requires(source -> source.getEntity() == null)
+                CommandManager.literal("disablenether")
+                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeNether(context, false))
         );
 
