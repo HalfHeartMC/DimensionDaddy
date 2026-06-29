@@ -19,12 +19,12 @@ netherEnabled=true
 ```
 You can edit this file directly while the server is stopped. Changes made via commands are written to it immediately.
 ## Requirements
-- Minecraft 1.21.11
-- Fabric Loader ≥ 0.18.2
+- Minecraft 26.1.2
+- Fabric Loader ≥ 0.19.3
 - Fabric API
-- Java 21
+- Java 25
 ## Installation
-1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 1.21.11.
+1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 26.1.2.
 2. Download [Fabric API](https://modrinth.com/mod/fabric-api) and place it in your `mods` folder.
 3. Place the DimensionDaddy `.jar` into your `mods` folder.
 4. Start your server.
