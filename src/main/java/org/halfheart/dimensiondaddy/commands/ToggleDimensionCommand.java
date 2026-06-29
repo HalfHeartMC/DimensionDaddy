@@ -3,87 +3,87 @@ package org.halfheart.dimensiondaddy.commands;
 import org.halfheart.dimensiondaddy.DimensionDaddy;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.command.permission.Permission;
-import net.minecraft.command.permission.PermissionLevel;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.PermissionLevel;
 
 public class ToggleDimensionCommand {
 
-    private static final Permission OP_LEVEL = new Permission.Level(PermissionLevel.GAMEMASTERS);
+    private static final Permission OP_LEVEL = new Permission.HasCommandLevel(PermissionLevel.GAMEMASTERS);
 
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
-                CommandManager.literal("enableend")
-                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
+                Commands.literal("enableend")
+                        .requires(src -> src.permissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeEnd(context, true))
         );
 
         dispatcher.register(
-                CommandManager.literal("disableend")
-                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
+                Commands.literal("disableend")
+                        .requires(src -> src.permissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeEnd(context, false))
         );
 
         dispatcher.register(
-                CommandManager.literal("endstatus")
+                Commands.literal("endstatus")
                         .executes(ToggleDimensionCommand::executeEndStatus)
         );
 
         dispatcher.register(
-                CommandManager.literal("enablenether")
-                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
+                Commands.literal("enablenether")
+                        .requires(src -> src.permissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeNether(context, true))
         );
 
         dispatcher.register(
-                CommandManager.literal("disablenether")
-                        .requires(src -> src.getPermissions().hasPermission(OP_LEVEL))
+                Commands.literal("disablenether")
+                        .requires(src -> src.permissions().hasPermission(OP_LEVEL))
                         .executes(context -> executeNether(context, false))
         );
 
         dispatcher.register(
-                CommandManager.literal("netherstatus")
+                Commands.literal("netherstatus")
                         .executes(ToggleDimensionCommand::executeNetherStatus)
         );
     }
 
-    private static int executeEnd(CommandContext<ServerCommandSource> context, boolean enabled) {
+    private static int executeEnd(CommandContext<CommandSourceStack> context, boolean enabled) {
         DimensionDaddy.setEndEnabled(enabled);
         String status = enabled ? "enabled" : "disabled";
-        context.getSource().sendFeedback(
-                () -> Text.literal("§aThe End dimension is now " + status),
+        context.getSource().sendSuccess(
+                () -> Component.literal("§aThe End dimension is now " + status),
                 true
         );
         return 1;
     }
 
-    private static int executeEndStatus(CommandContext<ServerCommandSource> context) {
+    private static int executeEndStatus(CommandContext<CommandSourceStack> context) {
         boolean enabled = DimensionDaddy.isEndEnabled();
         String status = enabled ? "§aenabled" : "§cdisabled";
-        context.getSource().sendFeedback(
-                () -> Text.literal("The End dimension is currently " + status),
+        context.getSource().sendSuccess(
+                () -> Component.literal("The End dimension is currently " + status),
                 false
         );
         return 1;
     }
 
-    private static int executeNether(CommandContext<ServerCommandSource> context, boolean enabled) {
+    private static int executeNether(CommandContext<CommandSourceStack> context, boolean enabled) {
         DimensionDaddy.setNetherEnabled(enabled);
         String status = enabled ? "enabled" : "disabled";
-        context.getSource().sendFeedback(
-                () -> Text.literal("§aThe Nether dimension is now " + status),
+        context.getSource().sendSuccess(
+                () -> Component.literal("§aThe Nether dimension is now " + status),
                 true
         );
         return 1;
     }
 
-    private static int executeNetherStatus(CommandContext<ServerCommandSource> context) {
+    private static int executeNetherStatus(CommandContext<CommandSourceStack> context) {
         boolean enabled = DimensionDaddy.isNetherEnabled();
         String status = enabled ? "§aenabled" : "§cdisabled";
-        context.getSource().sendFeedback(
-                () -> Text.literal("The Nether dimension is currently " + status),
+        context.getSource().sendSuccess(
+                () -> Component.literal("The Nether dimension is currently " + status),
                 false
         );
         return 1;
