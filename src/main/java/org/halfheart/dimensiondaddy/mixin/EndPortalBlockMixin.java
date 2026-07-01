@@ -27,6 +27,16 @@ public class EndPortalBlockMixin {
                         true
                 );
             }
+            return;
+        }
+        if (!DimensionDaddy.isOverworldEnabled() && level.dimension().equals(Level.END)) {
+            ci.cancel();
+            if (entity instanceof ServerPlayer player) {
+                player.sendSystemMessage(
+                        Component.literal("§cThe Overworld dimension is currently disabled!"),
+                        true
+                );
+            }
         }
     }
 }
