@@ -27,6 +27,16 @@ public class NetherPortalBlockMixin {
                         true
                 );
             }
+            return;
+        }
+        if (!DimensionDaddy.isOverworldEnabled() && level.dimension().equals(Level.NETHER)) {
+            ci.cancel();
+            if (entity instanceof ServerPlayer player) {
+                player.sendSystemMessage(
+                        Component.literal("§cThe Overworld dimension is currently disabled!"),
+                        true
+                );
+            }
         }
     }
 }
