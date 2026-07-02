@@ -76,7 +76,7 @@ Backups live under `config/DimensionDaddy/backups/<id>/`, each with a `backup.pr
 
 - Minecraft 26.1.2
 - Fabric Loader 0.19.3 or newer
-- Fabric API
+- Fabric API 0.153.0+26.2 or newer
 - Java 25
 
 ## Installation
