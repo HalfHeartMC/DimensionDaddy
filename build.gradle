@@ -6,6 +6,12 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+// This configures the final name of the built JAR file
+base {
+    archivesName = project.archives_base_name
+    version = "${project.mod_version}-${project.minecraft_version}"
+}
+
 repositories {
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -42,14 +48,15 @@ dependencies {
 }
 
 processResources {
-    def version = project.version
-    inputs.property "version", version
+    // We isolate the pure mod version here so fabric.mod.json doesn't get the MC version attached
+    def modVersion = project.mod_version
+    inputs.property "version", modVersion
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "loader_version", project.loader_version
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand "version": version,
+        expand "version": modVersion,
                 "minecraft_version": project.minecraft_version,
                 "loader_version": project.loader_version
     }
