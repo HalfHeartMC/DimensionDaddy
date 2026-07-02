@@ -78,7 +78,7 @@ java {
 }
 
 jar {
-    def projectName = project.name
+    def projectName = "$project.name-$minecraft_version"
     inputs.property "projectName", projectName
 
     from("LICENSE") {

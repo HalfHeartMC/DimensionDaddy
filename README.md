@@ -2,7 +2,7 @@
 
 # DimensionDaddy
 
-A Fabric mod for Minecraft 26.1.2 that gives server operators full control over the Overworld, Nether, and End dimensions: enable or disable access to any of them on the fly, and back up, restore, or fully reset each dimension's actual world data, not just a toggle flag.
+A Fabric mod for Minecraft 26.2 that gives server operators full control over the Overworld, Nether, and End dimensions: enable or disable access to any of them on the fly, and back up, restore, or fully reset each dimension's actual world data, not just a toggle flag.
 
 Works on dedicated servers, singleplayer worlds, and soft-hosted servers using tools like Essential. When a dimension is disabled, the relevant portal blocks are cancelled and the player gets a direct message explaining why.
 
@@ -74,14 +74,14 @@ Backups live under `config/DimensionDaddy/backups/<id>/`, each with a `backup.pr
 
 ## Requirements
 
-- Minecraft 26.1.2
+- Minecraft 26.2
 - Fabric Loader 0.19.3 or newer
-- Fabric API
+- Fabric API 0.153.0+26.2 or newer
 - Java 25
 
 ## Installation
 
-1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 26.1.2.
+1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 26.2.
 2. Download [Fabric API](https://modrinth.com/mod/fabric-api) and place it in your `mods` folder.
 3. Place the DimensionDaddy jar into the same `mods` folder.
 4. Start the game or server.
