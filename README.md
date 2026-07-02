@@ -91,7 +91,7 @@ Backups live under `config/DimensionDaddy/backups/<id>/`, each with a `backup.pr
 Building requires Java 25. If Gradle reports that it is running on an older JVM despite Java 25 being installed, check `JAVA_HOME` and your IDE's configured Gradle JVM, since either can silently override which runtime Gradle actually uses.
 
 ```
-git clone <your repository URL>
+git clone https://github.com/HalfHeartMC/DimensionDaddy.git
 cd DimensionDaddy
 ./gradlew build
 ```
